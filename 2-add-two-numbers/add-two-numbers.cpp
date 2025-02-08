@@ -58,11 +58,11 @@ public:
         mover=newnode;  
      }
      // freee newhead
-     ListNode* res=newhead;
-     res=res->next;  //shift pointer
-     newhead->next=NULL;
-      delete newhead;
-      return res;//
+     //ListNode* res=newhead;
+     //res=res->next;  //shift pointer
+    // newhead->next=NULL;
+    //  delete newhead;
+      return newhead->next;//
     }
 };
 
