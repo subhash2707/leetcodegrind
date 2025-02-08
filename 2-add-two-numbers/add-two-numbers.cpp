@@ -22,6 +22,46 @@ public:
     ListNode* mover=newhead;
     int sum=0;
     int carry=0;
+    while(head1 || head2 || carry){
+       sum=carry;//carry is aleresdy added
+       if(head1) {
+        sum+=head1->val;
+         head1=head1->next;
+       }
+       if(head2){
+         sum+=head2->val;
+         head2=head2->next;
+       }
+        
+        carry=sum/10;
+        sum%=10;
+        ListNode* newnode=new ListNode(sum);
+        mover->next=newnode;
+        mover=newnode;
+    } 
+    
+     // freee newhead
+     //ListNode* res=newhead;
+     //res=res->next;  //shift pointer
+    // newhead->next=NULL;
+    //  delete newhead;
+      return newhead->next;//
+    }
+};
+
+
+
+
+/* using while loop
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode* head1=l1;
+    ListNode* head2=l2;  
+    ListNode* newhead=new ListNode(0);
+    ListNode* mover=newhead;
+    int sum=0;
+    int carry=0;
     while(head1 && head2){
         sum=head1->val+head2->val+carry;
         head1=head1->next;
@@ -58,13 +98,18 @@ public:
         mover=newnode;  
      }
      // freee newhead
-     //ListNode* res=newhead;
-     //res=res->next;  //shift pointer
-    // newhead->next=NULL;
-    //  delete newhead;
-      return newhead->next;//
+     ListNode* res=newhead;
+     res=res->next;  //shift pointer
+     newhead->next=NULL;
+      delete newhead;
+      return res;//
     }
 };
+*/
+
+
+
+
 
 
 //tle because of limit of int and long long has limit 
