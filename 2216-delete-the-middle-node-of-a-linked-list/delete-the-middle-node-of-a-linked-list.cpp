@@ -8,6 +8,8 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+ //ve just need prev of middle
+ //no need to find the slow only prev is sufficent
 class Solution { 
     pair<ListNode*,ListNode*> middleandprev(ListNode* &head){
         ListNode* slow=head,*fast=head;
@@ -29,7 +31,8 @@ public:
       ListNode* middle= midd_prev.first;
       ListNode* prev=midd_prev.second;
 
-     prev->next=middle->next;
+   //  prev->next=middle->next;
+   prev->next=prev->next->next;
      delete middle;
      return head; 
     }
