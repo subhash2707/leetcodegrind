@@ -8,7 +8,11 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
- //int startpos=len-n+1;
+ //int startpos=(len-n+1) node is to be deleted;
+ // we want to reach (len-n)th node
+ 
+
+
 class Solution {
     
 public:
@@ -19,12 +23,54 @@ public:
         len++;
         temp=temp->next;
      } 
-     int startpos=len-n+1;
+     int startpos=len-n+1;//node to be deleted
+     //we need to point at its prev node (len-n)th node 
+     int previous=len-n;//pre
      if(startpos<1) return nullptr;
      if(startpos==1) return head->next;
      int cnt=0;
      temp=head;
-     while(cnt<startpos-2){//temp cannot be null becos we have already checked it is in between
+     while(temp){//temp cannot be null becos we have already checked it is in between
+     cnt++;
+     if(cnt==previous) break;
+        temp=temp->next;
+       // cnt++;
+     }
+  //  if(temp->next)//becos we are trying to fetch temp->next
+  //but it will always be there as it lies in between
+     temp->next=temp->next->next;
+      return head;
+
+    }
+};
+
+
+
+
+//----------CONFUSION OF CNT<? ELIMINATED
+
+
+
+
+/*
+class Solution {
+    
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+     ListNode* temp=head;
+     int len=0;
+     while(temp){
+        len++;
+        temp=temp->next;
+     } 
+     int startpos=len-n+1;//node to be deleted
+     //we need to point at its prev node (len-n)th node 
+     int previous=len-n;//pre
+     if(startpos<1) return nullptr;
+     if(startpos==1) return head->next;
+     int cnt=0;
+     temp=head;
+     while(cnt<previous-1){//temp cannot be null becos we have already checked it is in between
         temp=temp->next;
         cnt++;
      }
@@ -35,3 +81,4 @@ public:
 
     }
 };
+*/
