@@ -24,11 +24,12 @@ public:
      if(startpos==1) return head->next;
      int cnt=0;
      temp=head;
-     while(cnt<startpos-2){
+     while(cnt<startpos-2){//temp cannot be null becos we have already checked it is in between
         temp=temp->next;
         cnt++;
      }
-    if(temp->next)//becos we are trying to fetch temp->next
+  //  if(temp->next)//becos we are trying to fetch temp->next
+  //but it will always be there as it lies in between
      temp->next=temp->next->next;
       return head;
 
