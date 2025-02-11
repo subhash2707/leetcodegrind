@@ -12,8 +12,9 @@
  * };
  */
 
+/*
+//.  m1 usign stack
 
-// m1 usign stack
 class Solution {
     public:
 
@@ -36,9 +37,57 @@ return true;
         
  }
  };
+*/
 
 
 
+
+
+
+ // METHOD USING SLOW AND FAST POIINTERS
+class Solution {
+    ListNode* reverse(ListNode* head){
+    ListNode* prev=nullptr;
+    ListNode* forward=nullptr;
+    ListNode* curr=head;
+
+    while(curr){
+        forward=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=forward;
+    }
+    return prev;//prev is new head
+}
+    public:
+
+
+ bool isPalindrome(ListNode* head) {
+        if (!head || !head->next) return true;
+   
+ListNode* slow=head;
+ListNode* fast=head;
+
+while(fast->next && fast->next->next){
+    fast=fast->next->next;
+    slow=slow->next;
+}
+//now slow points to first mid(mid for odd)
+ListNode* newhead=reverse(slow->next);
+ListNode* t1=head;
+ListNode* t2=newhead;
+
+while(t2){
+    if(t1->val!=t2->val){
+        reverse(slow->next);
+        return false;
+    }
+    t1=t1->next;
+    t2=t2->next;
+}
+return true;
+ }
+};
 
 /*
 // METHOD 3-------------------------------------------
