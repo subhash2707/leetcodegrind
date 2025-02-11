@@ -8,6 +8,72 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+class Solution {
+    int len(ListNode* head) {
+        ListNode* temp = head;
+        int cnt = 0;
+        while (temp) {
+            cnt++;
+            temp = temp->next;
+        }
+        return cnt;
+    }
+
+    ListNode* reverse(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        while (curr) {
+            ListNode* nextNode = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextNode;
+        }
+        return prev;
+    }
+
+public:
+    bool isPalindrome(ListNode* head) {
+        if (!head || !head->next) return true;
+
+        int length = len(head);
+        int mid = length / 2;
+        
+        ListNode* temp = head;
+        for (int i = 0; i < mid - 1; i++) {  // Move temp to node before mid
+            temp = temp->next;
+        }
+
+        // Reverse second half and update the link
+        ListNode* newhead = reverse(temp->next);
+        // temp->next = reverse(secondHalf);
+        // ListNode* newhead = temp->next;
+
+        // Compare first half and reversed second half
+        ListNode* t1 = head;
+        ListNode* t2 = newhead;
+      //  bool isPalin = true;
+        while (t2) {
+            if (t1->val != t2->val) {
+               return false;
+            }
+            t1 = t1->next;
+            t2 = t2->next;
+        }
+
+        // Restore the original second half
+     //   temp->next = reverse(newhead);
+
+        return true;
+    }
+};
+
+
+
+
+
+
+ /*
 class Solution {
 int len(ListNode* &head){
  ListNode* temp=head;
@@ -68,3 +134,4 @@ public:
  return true;
     }
 };
+*/
