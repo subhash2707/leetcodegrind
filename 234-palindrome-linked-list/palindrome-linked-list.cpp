@@ -126,7 +126,8 @@ public:
     // if(len%2==0) rev(mid->next);
     // else rev(mid->next)
     //reverse from mid-next
-
+    if (length % 2 != 0) temp = temp->next;
+    
     ListNode* newhead=reverse(temp->next);
     
     ListNode* t1=head;
