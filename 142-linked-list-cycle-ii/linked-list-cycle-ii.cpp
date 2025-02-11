@@ -1,3 +1,7 @@
+/*
+1.usnign visited map
+2.using fast and slow pointer
+*/
 /**
  * Definition for singly-linked list.
  * struct ListNode {
