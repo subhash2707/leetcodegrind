@@ -14,6 +14,7 @@ WHEREVER THEY MEET AGAIN IS THE POI
  */
  
  //.  METHOD 1 USNG LENGTH 
+ /*
 class Solution {
     int len (ListNode* head){
         ListNode* t=head;
@@ -56,4 +57,33 @@ if(len1>len2)
         return poi(headA,headB,diff);
     else return poi(headB,headA,diff);
 }
+};
+*/
+
+
+
+
+
+// ************METHOD 2 MARKING *** 
+class Solution{
+    public:
+
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        unordered_map<ListNode*,bool>visited;//mark visited node
+ListNode* temp=headA;
+while(temp){
+    visited[temp]=true;
+    temp=temp->next;
+}
+
+//iteratre from another ll
+temp=headB;
+while(temp){
+    if(visited[temp]==true) return temp;
+    temp=temp->next;
+}
+return nullptr;
+
+    }
 };
