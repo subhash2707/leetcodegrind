@@ -106,7 +106,7 @@ public:
 
 
 
- 
+ /*
 class Solution {
 int len(ListNode* &head){
  ListNode* temp=head;
@@ -174,3 +174,4 @@ public:
  return true;
     }
 };
+*/
