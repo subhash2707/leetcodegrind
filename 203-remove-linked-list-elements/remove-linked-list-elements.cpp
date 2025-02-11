@@ -76,6 +76,8 @@ public:
 */
 
 
+/*
+// dummy method (more clean)
 
 class Solution {
 public:
@@ -96,3 +98,40 @@ public:
     return head;
     }
 };
+*/
+
+
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+    //delete all starting occurences 
+    while(head && head->val==val) {
+        ListNode* temp=head;
+        head=head->next;
+        delete temp;
+    } 
+    //check if head is not null
+    if(!head) return nullptr;
+
+    // now delete all occurences after headd
+   //only one previos node is enough to delete a.node
+    ListNode* mover=head;
+    while(mover->next){      // can use prev and curr approach
+        if(mover->next->val==val){
+            ListNode* todelete=mover->next;
+            mover->next=mover->next->next;
+            delete todelete;
+        }
+        else mover=mover->next;
+        
+    }
+    return head;
+    }
+};
+
+
+
+
+
+
