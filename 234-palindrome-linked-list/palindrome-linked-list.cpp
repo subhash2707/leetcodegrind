@@ -8,7 +8,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
+/*
 class Solution {
     int len(ListNode* head) {
         ListNode* temp = head;
@@ -67,13 +67,13 @@ public:
         return true;
     }
 };
+*/
 
 
 
 
 
-
- /*
+ 
 class Solution {
 int len(ListNode* &head){
  ListNode* temp=head;
@@ -112,16 +112,22 @@ public:
 //     }
 
 
-    for (int i = 0; i < mid; i++) {
-    temp = temp->next;
-}
+    // for (int i = 1; i < mid; i++) {
+    // temp = temp->next;
+    int cnt=0;
+    while(cnt<mid){
+        cnt++;
+        if(cnt==mid) break;
+        temp=temp->next;
+    }
+
 
     //now we have reached the mid
     // if(len%2==0) rev(mid->next);
     // else rev(mid->next)
     //reverse from mid-next
 
-    ListNode* newhead=reverse(temp);
+    ListNode* newhead=reverse(temp->next);
     
     ListNode* t1=head;
     ListNode* t2=newhead;
@@ -134,4 +140,3 @@ public:
  return true;
     }
 };
-*/
