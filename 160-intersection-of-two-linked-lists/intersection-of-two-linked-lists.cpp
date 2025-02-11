@@ -63,11 +63,9 @@ if(len1>len2)
 
 
 
-
-// ************METHOD 2 MARKING *** 
+/*
+// ************METHOD 2 MARKING *** tc=0(n!+n2),sc-(o(n1))
 class Solution{
-    public:
-
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         unordered_map<ListNode*,bool>visited;//mark visited node
@@ -87,3 +85,34 @@ return nullptr;
 
     }
 };
+*/
+
+
+
+
+
+// METHOD 3********** USING DOUBLE TRAVERSAL*****
+
+class Solution{
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+      ListNode * t1=headA;
+      ListNode * t2=headB;
+ //Two-pointer method: traverse both lists
+        while (t1 != t2) {
+            t1 = t1 ? t1->next : headB; // Switch to the other list
+            t2 = t2 ? t2->next : headA; // Switch to the other list
+            
+            // if(t1) t1=t1->next;
+            // else t1=headB;
+            // if(t2) t2=t2->next;
+            // else t2=headA;
+        }
+
+        return t1; // Either intersection node or nullptr
+    }
+};
+
+
+
+
