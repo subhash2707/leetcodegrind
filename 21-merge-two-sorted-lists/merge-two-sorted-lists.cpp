@@ -8,6 +8,9 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+//1.using arrr
+//2 using two pointer
+/*
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
@@ -37,5 +40,50 @@ public:
     temp = newnode;
 }
 return newhead;
+    }
+};
+*/
+
+
+
+//METHOD 2 USING TWO POINTER
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if (!list1) return list2;
+        if (!list2) return list1;
+
+        ListNode* dummy = new ListNode(0);
+        ListNode* temp = dummy;
+
+        while (list1 && list2) {
+            if (list1->val <= list2->val) {
+                ListNode* newnode = new ListNode(list1->val);
+                temp->next = newnode;
+                temp = newnode;
+                list1 = list1->next;
+            } else {
+                ListNode* newnode = new ListNode(list2->val);
+                temp->next = newnode;
+                temp = newnode;
+                list2 = list2->next;
+            }
+        }
+
+        while (list1) {
+            ListNode* newnode = new ListNode(list1->val);
+            temp->next = newnode;
+            temp = newnode;
+            list1 = list1->next;
+        }
+
+        while (list2) {
+            ListNode* newnode = new ListNode(list2->val);
+            temp->next = newnode;
+            temp = newnode;
+            list2 = list2->next;
+        }
+
+        return dummy->next;
     }
 };
